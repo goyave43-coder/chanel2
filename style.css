@@ -1,0 +1,140 @@
+/* STRUCTURE PRINCIPALE */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    background-color: #fceceb;
+    overflow: hidden;
+}
+
+/* LE PANNEAU LATÉRAL */
+#sidebar {
+    width: 340px; 
+    min-width: 340px;
+    background-color: #fff;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.logo-container {
+    padding: 20px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+}
+
+.logo-container h2 { margin: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px;}
+.logo-container p { margin: 5px 0 0 0; font-size: 0.8rem; color: #ccc;}
+
+.control-panel, .stats-panel {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+/* RÉGLAGES DES SEUILS ET LOTS */
+.threshold-controls {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #ccc;
+    font-size: 0.85rem;
+    max-height: 250px;
+    overflow-y: auto;
+}
+.threshold-controls label {
+    display: block;
+    margin-bottom: 5px;
+    color: #444;
+    font-weight: bold;
+}
+.threshold-controls span {
+    color: #e83e8c;
+}
+.threshold-controls input[type=range] {
+    width: 100%;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* PANNEAU DES KPIS */
+.kpi-panel {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    background-color: #fafafa;
+    border-bottom: 1px solid #eee;
+}
+
+.kpi-box {
+    text-align: center;
+    width: 31%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.kpi-box h4 { margin: 0; font-size: 0.55rem; color: #666; text-transform: uppercase; }
+.kpi-value { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 5px; }
+
+/* LA CARTE INTERACTIVE */
+#map {
+    flex: 1;
+    height: 100%;
+    z-index: 1;
+}
+
+/* ANIMATION DES FLUX DE LIVRAISON */
+.transit-line {
+    animation: dashFlow 1s linear infinite;
+}
+@keyframes dashFlow {
+    from { stroke-dashoffset: 20; }
+    to { stroke-dashoffset: 0; }
+}
+
+/* LE BOUTON TOGGLE */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-bottom: 10px;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px; width: 26px;
+    left: 4px; bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+input:checked + .slider { background-color: #000; }
+input:checked + .slider:before { transform: translateX(26px); }
+.slider.round { border-radius: 34px; }
+.slider.round:before { border-radius: 50%; }
+
+/* LOGS EN DIRECT */
+#logList {
+    list-style-type: none;
+    padding: 0;
+    font-size: 0.85rem;
+    color: #444;
+    max-height: 400px;
+    overflow-y: auto;
+}
+#logList li { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px dashed #ddd; line-height: 1.4; }
+#logList li em { color: #888; font-weight: bold; font-style: normal; }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation Supply Chain - Type C</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="sidebar">
+        <div class="logo-container">
+            <h2>SIMULATION SUPPLY CHAIN</h2>
+            <p>Optimisation des produits de Type C</p>
+        </div>
+        
+        <div class="control-panel">
+            <h3>Mode de distribution</h3>
+            <label class="switch">
+                <input type="checkbox" id="toggleWarehouse">
+                <span class="slider round"></span>
+            </label>
+            <p id="modeStatus"><strong>AVANT :</strong> Flux tendu depuis l'usine (France)</p>
+            
+            <div class="threshold-controls">
+                <label>Point de commande Magasin : <span id="valSeuilMag">5</span></label>
+                <input type="range" id="seuilMagasin" min="0" max="50" value="5">
+
+                <label>Taille de Lot Magasin : <span id="valLotMag">15</span></label>
+                <input type="range" id="lotMagasin" min="5" max="100" value="15">
+                
+                <hr style="border: 0; border-top: 1px dashed #ddd; margin: 10px 0;">
+
+                <label>Point de commande Warehouse : <span id="valSeuilWh">300</span></label>
+                <input type="range" id="seuilWarehouse" min="0" max="4000" value="300" step="50">
+
+                <label>Taille de Lot Warehouse : <span id="valLotWh">400</span></label>
+                <input type="range" id="lotWarehouse" min="100" max="5000" value="400" step="50">
+
+                <hr style="border: 0; border-top: 1px dashed #ddd; margin: 10px 0;">
+                <label>Vitesse de simulation : <span id="valVitesse">x1</span></label>
+                <input type="range" id="vitesseSimu" min="1" max="10" value="1" step="1">
+            </div>
+        </div>
+
+        <div class="kpi-panel">
+            <div class="kpi-box">
+                <h4>Taux de Service (24h)</h4>
+                <div class="kpi-value" id="kpi-service">100%</div>
+            </div>
+            <div class="kpi-box">
+                <h4>Stock Moy. Magasin</h4>
+                <div class="kpi-value" id="kpi-stock">50</div>
+            </div>
+            <div class="kpi-box">
+                <h4>Stock Global (24h)</h4>
+                <div class="kpi-value" id="kpi-global">0</div>
+            </div>
+        </div>
+
+        <div class="stats-panel">
+            <h3>Dynamique en direct</h3>
+            <ul id="logList">
+                <li>Initialisation de la simulation...</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
